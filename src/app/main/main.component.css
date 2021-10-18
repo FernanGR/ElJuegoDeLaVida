@@ -1,7 +1,7 @@
  
 #container{
     background-color: floralwhite;
-    padding: 0;
+    padding: 5px;
     margin: 0;
 }
 #table{
@@ -10,7 +10,7 @@
     padding-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
-    width: 850px;
+    width: 650px;
     height: 50%;
     background-color: whitesmoke;
 }
@@ -32,6 +32,11 @@ button{
     height: 500px; */
     border: 0.5px black solid;
 }
+
+.bordes{
+    border: 0.5px white solid;
+}
+
 
 .vivo{
     background-color: white;

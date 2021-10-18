@@ -12,6 +12,8 @@ export class MainComponent implements OnInit {
   fila: number = 20;
   columna: number = 20;
   interval:any;
+  borde:boolean = true;
+  playActive: boolean = true;
 
   constructor(
     private serv: ServiceService
@@ -61,13 +63,14 @@ oneStep(){
 
 play(){
   console.log("play")
-
+  this.playActive = false;
   this.interval = setInterval(()=>{this.oneStep()},1000)
- }
+}
 
 stop(){
   console.log("stop")
   clearInterval(this.interval);
+  this.playActive = true;
 }
 
 muerte(){
@@ -75,5 +78,13 @@ muerte(){
   this.serv.muerte();
 }
 
+
+celdas(){
+  if(this.borde){
+    this.borde = false;
+  }else{
+    this.borde = true;
+  }
+}
 
 }
