@@ -11,13 +11,11 @@ export class MainComponent implements OnInit {
   tabla:Array<Array<any>>;
   fila: number = 20;
   columna: number = 20;
+  interval:any;
 
   constructor(
-    private serv: ServiceService,
- 
-  ) {
-
-   }
+    private serv: ServiceService
+  ) { }
 
 
   ngOnInit(): void {
@@ -54,15 +52,27 @@ export class MainComponent implements OnInit {
 }
 
 oneStep(){
-    
+  //  console.log(this.serv.oneStepServ()) 
+  //  this.tabla = [];
+   this.tabla = this.serv.oneStepServ();
+  //  this.serv.oneStepServ();
+  console.log("onestep");
 }
 
 play(){
+  console.log("play")
 
-}
+  this.interval = setInterval(()=>{this.oneStep()},1000)
+ }
 
 stop(){
+  console.log("stop")
+  clearInterval(this.interval);
+}
 
+muerte(){
+  // console.log(this.serv.muerte()) 
+  this.serv.muerte();
 }
 
 
