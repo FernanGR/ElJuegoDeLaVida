@@ -14,8 +14,7 @@ export class MainComponent implements OnInit {
 
   constructor(
     private serv: ServiceService,
-    private element: ElementRef,
-    private render: Renderer2
+ 
   ) {
 
    }
@@ -54,7 +53,7 @@ export class MainComponent implements OnInit {
      }
 }
 
-onestep(){
+oneStep(){
     
 }
 
