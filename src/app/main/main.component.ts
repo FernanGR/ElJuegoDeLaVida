@@ -52,8 +52,18 @@ export class MainComponent implements OnInit {
      else{
       this.tabla[x][y] = 1
      }
-     
- 
+}
+
+onestep(){
+    
+}
+
+play(){
+
+}
+
+stop(){
+
 }
 
 

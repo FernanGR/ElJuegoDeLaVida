@@ -25,5 +25,4 @@ export class ServiceService {
     return this.tab;
   }
 
-
 }
