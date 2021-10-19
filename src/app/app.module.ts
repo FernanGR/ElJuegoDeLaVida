@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component';
+import { TablaComponent } from './tabla/tabla.component';
 import { CeldaComponent } from './celda/celda.component';
+import { TablaDynamicComponent } from './tablaDynamic.component';
+import { DynamicHostDirective } from './dynamic-host.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    CeldaComponent
+    TablaComponent,
+    CeldaComponent,
+    TablaDynamicComponent,
+    DynamicHostDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

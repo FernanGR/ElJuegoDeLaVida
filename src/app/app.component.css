@@ -5,3 +5,9 @@ h1{
     background-color: cornflowerblue;
     height: 50px;
 }
+button{
+    margin: 10px;
+    cursor:pointer;
+    background-color: cadetblue;
+    border-radius: 5px;
+}

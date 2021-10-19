@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceService {
+export class TableService {
 
   f = 20; // número de filas
   c = 18; // número de columnas
@@ -11,9 +11,12 @@ export class ServiceService {
   auxTab:Array<Array<any>> = [];
 
   constructor() { }
+ 
 
-
-
+  getTabla(){
+    return this.tab;
+  }
+  
   inicializa(): Array<Array<any>>{
     for(let y=0; y <= this.f-1; y++){
       let columna = [];
@@ -25,58 +28,60 @@ export class ServiceService {
     return this.tab;
   }
 
-  crearMatrizB(){
-    this.auxTab = [];
-     for(let y=0; y <= this.f-1; y++){
+  // clonarMatrizB(){
+  //   this.auxTab = [];
+  //    for(let y=0; y <= this.f-1; y++){
+  //     let columna = [];
+  //     for(let x = 0; x <= this.c-1; x++){
+  //         columna.push(this.tab[y][x])
+  //     }
+  //     this.auxTab.push(columna)
+  //   }
+  // }
+
+  // clonarMatrizA(){
+  //   this.tab = [];
+  //    for(let y=0; y <= this.f-1; y++){
+  //     let columna = [];
+  //     for(let x = 0; x <= this.c-1; x++){
+  //         columna.push(this.auxTab[y][x])
+  //     }
+  //     this.tab.push(columna)
+  //   }
+  // }
+
+  clonarMatriz(matrizA:Array<Array<number>>):Array<Array<number>>{
+    let matrizAuxiliar:Array<Array<number>> = [];
+    let filas = matrizA.length;
+    let columnas = matrizA[0].length;
+    for(let y=0; y <= filas-1; y++){
       let columna = [];
-      for(let x = 0; x <= this.c-1; x++){
-          columna.push(this.tab[y][x])
+      for(let x = 0; x <= columnas-1; x++){
+          columna.push(matrizA[y][x])
       }
-      this.auxTab.push(columna)
+      matrizAuxiliar.push(columna)
     }
+    return matrizAuxiliar;
   }
 
-  crearMatrizA(){
-    this.tab = [];
-     for(let y=0; y <= this.f-1; y++){
-      let columna = [];
-      for(let x = 0; x <= this.c-1; x++){
-          columna.push(this.auxTab[y][x])
-      }
-      this.tab.push(columna)
-    }
-  }
-
-  crearMatrizAB(matrizA:Array<Array<any>>,matrizB:Array<Array<any>>):Array<Array<any>>{
-    matrizA = [];
-     for(let y=0; y <= this.f-1; y++){
-      let columna = [];
-      for(let x = 0; x <= this.c-1; x++){
-          columna.push(matrizB[y][x])
-      }
-      matrizA.push(columna)
-    }
-    return matrizA;
-  }
-
-  oneStepServ(): Array<Array<any>>{
-    // this.auxTab = this.tab;
-    // this.crearMatrizAB(this.auxTab,this.tab);
-    this.crearMatrizB();
+  oneStepServ(condicion:string): Array<Array<number>>{
+    this.auxTab = this.clonarMatriz(this.tab);
     let contV = 0;
-
+    let condiciones = condicion.split('/');
+    let viva = condiciones[0];
+    let muerta = condiciones[1];
     //recorrido de izq a derecha-- fila x columna
     for(let y = 0; y <= this.f-1; y++){
       for(let x = 0; x <= this.c-1; x++){
         contV = this.checkeoAlrededor(y,x);
           if(this.tab[y][x]===1){ // actual viva
-            if(contV===2 || contV===3){
-              this.auxTab[y][x] = 1;
-            }else{
-              this.auxTab[y][x] = 0;
-            }
-          }else{  // actual muerta
-            if(contV===3){
+            if(viva.includes(contV.toString())){  //viva e incluida
+                this.auxTab[y][x] = 1;
+              }else{
+                this.auxTab[y][x] = 0;
+              }
+            }else{  // actual muerta
+              if(muerta.includes(contV.toString())){  //muerta e incluida
               this.auxTab[y][x]=1;
             }else{
               this.auxTab[y][x] = 0;
@@ -84,8 +89,7 @@ export class ServiceService {
           }
       }//fin for
     }
-    // this.crearMatrizAB(this.tab,this.auxTab)
-    this.crearMatrizA();
+    this.tab = this.clonarMatriz(this.auxTab);
     return this.tab;
 
   }//fin one step
@@ -154,7 +158,6 @@ export class ServiceService {
       }
     }
   }
-
  
 
 }
