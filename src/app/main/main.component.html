@@ -1,0 +1,23 @@
+
+<div id="container">
+
+    
+    <div id="table" *ngFor="let f of tabla; let i = index">
+        <app-celda class="cell" *ngFor="let c of f; let j = index" (click)="modificarEstado(i, j)" [datos]="c" [ngClass]="{'bordes': borde}">
+           
+        </app-celda>
+        <!-- <span class="cell" *ngFor="let c of f; let j = index" (click)="modificarEstado(i, j, celda)" #celda id={{i}}-{{j}}>
+            {{ c }}        
+        </span> -->
+        
+    </div>
+    <br>
+    <div id="buttons">
+        <button type="button" (click)="oneStep()">one Step</button>
+        <button type="button" (click)="play() " [disabled]="!playActive">Play</button>
+        <button type="button" (click)="stop()" [disabled]="playActive">Stop</button>
+        <button type="button" (click)="muerte()">Muerte</button>
+        <button type="button" (click)="celdas()">Celdas</button>
+
+    </div>
+</div>
