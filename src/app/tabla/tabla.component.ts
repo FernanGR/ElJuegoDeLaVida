@@ -1,12 +1,15 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { ServiceService } from '../service.service';
+import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { TableService } from '../table.service';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-tabla',
+  templateUrl: './tabla.component.html',
+  styleUrls: ['./tabla.component.css'],
+  providers: [TableService]
 })
-export class MainComponent implements OnInit {
+export class TablaComponent implements OnInit {
+
+  @Input() reglas:string;
 
   tabla:Array<Array<any>>;
   fila: number = 20;
@@ -16,7 +19,7 @@ export class MainComponent implements OnInit {
   playActive: boolean = true;
 
   constructor(
-    private serv: ServiceService
+    private serv: TableService
   ) { }
 
 
@@ -54,10 +57,7 @@ export class MainComponent implements OnInit {
 }
 
 oneStep(){
-  //  console.log(this.serv.oneStepServ()) 
-  //  this.tabla = [];
-   this.tabla = this.serv.oneStepServ();
-  //  this.serv.oneStepServ();
+  this.tabla = this.serv.oneStepServ(this.reglas);
   console.log("onestep");
 }
 
@@ -78,7 +78,13 @@ muerte(){
   this.serv.muerte();
 }
 
-
+destruir(){
+  try{
+    // this.tabla.destroy();
+}
+catch(e){
+}
+}
 celdas(){
   if(this.borde){
     this.borde = false;
@@ -86,5 +92,11 @@ celdas(){
     this.borde = true;
   }
 }
+
+  tabla233(){
+    
+  }
+
+
 
 }
