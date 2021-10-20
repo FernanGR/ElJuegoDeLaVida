@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { TablaComponent } from './tabla/tabla.component';
-import { CeldaComponent } from './celda/celda.component';
+import { TablaComponent } from './componentes/tabla/tabla.component';
+import { CeldaComponent } from './componentes/celda/celda.component';
 import { TablaDynamicComponent } from './tablaDynamic.component';
 import { DynamicHostDirective } from './dynamic-host.directive';
 
