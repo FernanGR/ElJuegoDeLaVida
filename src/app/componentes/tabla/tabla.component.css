@@ -1,10 +1,17 @@
- 
+
 #container{
     background-color: floralwhite;
     padding: 5px;
     margin: 0;
 }
+
 #table{
+    margin-top: 15px;   
+    margin-left: 200px; 
+    margin-right: 200px; 
+    /* background-color: whitesmoke; */
+}
+.fTable{
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -12,7 +19,6 @@
     margin-right: auto;
     width: 650px;
     height: 50%;
-    background-color: whitesmoke;
 }
 
 #buttons{
@@ -24,7 +30,7 @@ button{
     margin: 10px;
     cursor:pointer;
     border-radius: 5px;
-    background-color: honeydew;
+    background-color: rgb(125, 224, 125);
 }
 
 .cell{

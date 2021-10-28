@@ -1,19 +1,20 @@
 <h1>El Juego De La Vida</h1>
 
 
-<div>
+<!-- <div>
     <label for="">añade las reglas del juego (vivas/muertas) </label>
     <input type="text" [(ngModel)]="reglasJuego">
-</div>
+</div> -->
 <div id="buttons">
-    <button type="button" (click)="newTable()">Crear Nueva Tabla</button>
+    <button type="button" (click)="newTable()" id='btnNew' >Crear Nueva Tabla</button>
 </div>
 
 <ng-container #tabla>
-    <app-tabla [reglas]="reglasJuego"></app-tabla>
+    <!-- <app-tabla [reglas]="reglasJuego"></app-tabla> -->
+    <!-- <app-tabla></app-tabla> -->
     
 </ng-container>
  
 <div id="buttons">
-    <button type="button" (click)="deleteTable()">Eliminar Tabla</button>
+    <button type="button" (click)="deleteTable()" id='btnDelete'>Eliminar Tabla</button>
 </div>
