@@ -10,8 +10,8 @@ import { TableService } from '../../services/table.service';
 })
 export class TablaComponent implements OnInit {
 
-  @Input() reglas:string;
-
+  // @Input() reglas:string;
+  reglas: string = "23/3";
   tabla:Array<Array<any>>;
   interval:any;
   borde:boolean = true;

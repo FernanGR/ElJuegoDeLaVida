@@ -1,7 +1,10 @@
 
 <div id="container">
 
-    
+    <div>
+        <label for="">añade las reglas del juego (vivas/muertas) </label>
+        <input type="text" [(ngModel)]="reglas">
+    </div>
     <div id="table" *ngFor="let f of tabla; let i = index">
         <app-celda class="cell" *ngFor="let c of f; let j = index" (click)="modificarEstado(i, j)" [datos]="c" [ngClass]="{'bordes': borde}">
            

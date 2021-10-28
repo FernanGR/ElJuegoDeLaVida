@@ -47,6 +47,7 @@ export class Table {
     }
   
     oneStepServ(condicion:string): Array<Array<number>>{
+      if(condicion ===""){condicion="23/3"}
       this.auxTab = this.clonarMatriz(this.tab);
       let contV = 0;
       let condiciones = condicion.split('/');
