@@ -10,7 +10,7 @@ import { TablaDynamicComponent } from './tablaDynamic.component'
 export class AppComponent {
   title = 'elJuegoDeLaVida';
   reglasJuego:string = "23/3";
-
+  tablaRefArray:ComponentRef<any>[] = []
   @ViewChild("tabla", {read:ViewContainerRef}) tabla: ViewContainerRef;
   tablaRef:ComponentRef<any>
 
@@ -22,14 +22,17 @@ export class AppComponent {
     const component = this.tabla.createComponent(nTable);
 
     this.tablaRef = component;
+    this.tablaRefArray.push(this.tablaRef)
   }
 
   deleteTable(){
     try{
-      this.tablaRef.destroy();
-  }
-  catch(e){
-  }
+      this.tablaRefArray[this.tablaRefArray.length-1].destroy();
+      this.tablaRefArray.pop();
+      // this.tablaRef.destroy();
+    }
+    catch(e){
+    }
   }
 
 
