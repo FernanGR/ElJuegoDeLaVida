@@ -17,3 +17,16 @@ export function clonTable() {
     return tabla0;
 
 }
+
+export function comparaTable(tabla1, tabla2){
+    let filas = tabla1.length;
+    let columnas = filas.length;
+    let iguales;
+    for(let i = 0; i<filas;i++){
+        for(let j = 0; j<columnas; j++){
+            iguales = (tabla1[i][j] === tabla2[i][j]);
+        }
+    }
+    return iguales;
+}
+
