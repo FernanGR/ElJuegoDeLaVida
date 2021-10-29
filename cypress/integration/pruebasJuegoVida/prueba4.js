@@ -3,7 +3,7 @@ require('cypress-plugin-tab')
 require('cypress-xpath')
 import 'cypress-file-upload';
 import { Table } from '../../models/tabla';
-import { clonTable } from '../../funciones/funciones'
+import { clonTable, comparaTable } from '../../funciones/funciones'
 require('@4tw/cypress-drag-drop')
 
 
@@ -25,25 +25,47 @@ describe('Funcionalidad ', ()=>{
 
     it('Prueba condiciones', ()=>{
         let condicion = "";
+        let tablaFinal;
+        let tabla1 = []
         cy.get('#inputReglas').should('be.visible').then((el)=>{
             condicion = el.val();
             // console.log(el.val());
+
             //tabla inicial //
             let tabla0 = []
-            
             cy.wait(tiempo);
             tabla0 = clonTable();
             // console.log(tabla0);
             let tabla = new Table(tabla0);
-            tabla.tab = tabla.oneStepServ(condicion);
-            // console.log(tabla);
             
+            setTimeout(() => {
+                // console.log(tabla)
+                tabla.oneStepServ(condicion).then(() =>{
+                    // console.log("ttt");
+                    // console.log(tabla);
+                    tablaFinal = tabla;
+                    // cy.wait(3000)
+                    cy.wait(tiempo)
+                    tabla1 = clonTable();
+                    console.log("tabla1 CAMBIADA")
+                    console.log(tabla1)
+                    // if(comparaTable(tabla1,tablaFinal.tab)
+                    console.log("tablafinal")
+                    console.log(tablaFinal)
+                    console.log(comparaTable(tabla1,tablaFinal.tab))
+                })
+            });
+            cy.get('.btnOneStep').should('be.visible').click({force:true})
+            
+            cy.get('argumento').should('be.visible').click({force:true})
+            cy.wait(tiempo)
+            cy.get('argumento').should('be.visible').type('texto')
+            cy.wait(tiempo)
         })
+        // console.log(comparaTable(tabla1,tablaFinal.tab))
         
-        cy.wait(3000)
-        // cy.get('.btnOneStep').should('be.visible').click({force:true})
-        // cy.wait(tiempo)
-
 
     })
 })
+
+ 
